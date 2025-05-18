@@ -70,23 +70,23 @@ export default function ProductHome() {
   };
 
   return (
-    <div className="container-fluid"> 
-      <h1 className="text-center my-3">商品篩選系統</h1>
+    <div className="container-fluid py-3"> 
+      <h1 className="text-center my-3 product-home-title">商品篩選系統</h1>
       <div className="row g-3"> 
-        <div className="col-md-4">
+        <div className="col-lg-3 col-md-4">
           <section className="filter-column-list h-100 p-3 bg-light border rounded">
-            <h5 className="text-nowrap mb-3">篩選器區域</h5> 
+            <h5 className="text-nowrap mb-3 product-home-subtitle">篩選器區域</h5> 
             <ProductFilters
               originItems={originItems}
               setFilteredItems={setFilteredItems}
             />
           </section>
         </div>
-        <div className="col-md-8">
+        <div className="col-lg-9 col-md-8">
           <section className="item-list-column h-100 p-3 bg-light border rounded">
-            <h5 className="mb-3">商品區域列表</h5>
-            <div className="d-flex align-items-center justify-content-between mb-3">
-              <div className="input-group w-auto">
+            <h5 className="mb-3 product-home-subtitle">商品區域列表</h5>
+            <div className="d-flex flex-wrap flex-sm-nowrap align-items-center justify-content-between mb-3 gap-2">
+              <div className="input-group input-group-sm w-auto mb-2 mb-sm-0 flex-shrink-1 me-sm-auto">
                 <label className="input-group-text" htmlFor="price_status">
                   資料順序
                 </label>
@@ -100,10 +100,10 @@ export default function ProductHome() {
                   <option value="asc">價格由低到高</option>
                 </select>
               </div>
-              <div className="d-flex align-items-center">
-                <span className="me-2">{`${currentPage}/${totalPages > 0 ? totalPages : 1}`}</span>
+              <div className="d-flex align-items-center flex-shrink-0">
+                <span className="me-2 text-nowrap px-2 py-1 bg-light border rounded-pill text-muted small">{`${currentPage}/${totalPages > 0 ? totalPages : 1}`}</span>
                 <div
-                  className="btn-group"
+                  className="btn-group btn-group-sm"
                   role="group"
                   aria-label="Pagination controls"
                 >
@@ -136,7 +136,7 @@ export default function ProductHome() {
         </div>
       </div>
 
-      <footer className="mt-4 text-center">
+      <footer className="mt-4 text-center text-muted small">
         <p>© {new Date().getFullYear()} 面試有限公司</p>
       </footer>
     </div>

@@ -36,3 +36,35 @@ width: 120px;
   border-radius: 16px;
 }
 
+@media(max-width: 575.99px){
+  .product-home-title {
+    font-size: 1.5rem; 
+    margin-bottom: 0.75rem !important; 
+  }
+
+  .product-home-subtitle {
+    font-size: 1rem; /* 在小螢幕上縮小 h5 字型 */
+    margin-bottom: 0.5rem !important; /* 調整下方間距 */
+  }
+
+  .item-list-column .input-group-sm .input-group-text,
+  .item-list-column .input-group-sm .form-select {
+    font-size: 0.75rem; /* 縮小字型 */
+    padding-top: 0.2rem;    /* 調整垂直內距 */
+    padding-bottom: 0.2rem; /* 調整垂直內距 */
+  }
+
+  .item-list-column .btn-group-sm > .btn {
+    font-size: 0.75rem; /* 縮小字型 */
+    padding: 0.2rem 0.4rem; /* 調整內距 */
+  }
+
+  .item-list-column .d-flex.align-items-center > .me-2.text-nowrap {
+    font-size: 0.75rem;
+  }
+
+ .filter-column-list .product-home-subtitle {
+  font-size: 1rem; /* 保持與商品列表區標題一致或進一步調整 */
+  }
+}
+

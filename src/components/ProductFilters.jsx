@@ -85,14 +85,14 @@ export default function ProductFilters({ originItems, setFilteredItems }) {
   return (
     <section>
       <div className="d-flex align-items-center">
-        <label htmlFor="searchinput" className="form-label m-0">
+        <label htmlFor="searchInput" className="form-label m-0 text-nowrap">
           搜尋：
         </label>
         <div className="">
           <input
             type="text"
             className="form-control form-control-sm"
-            id="searchinput"
+            id="searchInput"
             value={filters.searchTerm}
             placeholder="請輸入商品名稱"
             onChange={(e) =>
@@ -157,10 +157,10 @@ export default function ProductFilters({ originItems, setFilteredItems }) {
           />
         </div>
       </div>
-      <div className="d-flex align-items-center mt-3">
-        <label className="form-label m-0">庫存量：</label>
-        <div className="d-flex align-items-center gap-4">
-          <div className="form-check">
+      <div className="d-flex align-items-center mt-3 flex-wrap">
+        <label className="form-label m-0 text-nowrap me-2 mb-md-2">庫存量：</label>
+        <div className="d-flex flex-wrap align-items-center gap-3">
+          <div className="form-check form-check-inline">
             <input
               className="form-check-input"
               type="checkbox"
