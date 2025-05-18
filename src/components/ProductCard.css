@@ -1,0 +1,18 @@
+.product-card-title{
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.product-card-subtitle{
+    font-size: 0.9rem;
+}
+
+.product-card-text{
+    font-size: 1rem;
+    margin-top: 0.75rem;
+}
+
+.product-price{
+    color: green;
+    font-weight: bold;
+}
