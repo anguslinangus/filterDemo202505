@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect } from "react";
 
 export default function ProductFilters({ originItems, setFilteredItems }) {
   const [filters, setFilters] = useState({
@@ -84,8 +84,8 @@ export default function ProductFilters({ originItems, setFilteredItems }) {
 
   return (
     <section>
-      <div className="mb-3">
-        <label htmlFor="searchinput" className="form-label">
+      <div className="d-flex align-items-center">
+        <label htmlFor="searchinput" className="form-label m-0">
           搜尋：
         </label>
         <div className="">
@@ -102,7 +102,7 @@ export default function ProductFilters({ originItems, setFilteredItems }) {
         </div>
       </div>
 
-      <div className="input-group-text">
+      <div className="input-group mt-3">
         類別：
         <div className="d-flex align-items-center gap-2 flex-wrap">
           {uniqueCategories.map((categoryObj, index) => (
@@ -132,7 +132,7 @@ export default function ProductFilters({ originItems, setFilteredItems }) {
         </div>
       </div>
 
-      <div className="mb-3 mt-2">
+      <div className="text-start mt-3">
         <label className="form-label">價格：</label>
         <div className="input-group">
           <span className="input-group-text">$</span>
@@ -157,8 +157,8 @@ export default function ProductFilters({ originItems, setFilteredItems }) {
           />
         </div>
       </div>
-      <div>
-        <label className="form-label">庫存量：</label>
+      <div className="d-flex align-items-center mt-3">
+        <label className="form-label m-0">庫存量：</label>
         <div className="d-flex align-items-center gap-4">
           <div className="form-check">
             <input

@@ -1,7 +1,5 @@
 import { useState, useEffect, useMemo } from "react";
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
+
 import "./ProductHome.css";
 import ProductList from "../components/ProductList";
 import ProductFilters from "../components/ProductFilters";
@@ -13,9 +11,8 @@ export default function ProductHome() {
   const [error, setError] = useState(null);
   const [orderStatus, setOrderStatus] = useState("desc");
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 12; // Number of items per page
+  const itemsPerPage = 12; 
 
-  // Sort items based on orderStatus
   const sortedItems = useMemo(() => {
     const itemsSort = [...filteredItems];
     return itemsSort.sort((a, b) =>
@@ -23,7 +20,6 @@ export default function ProductHome() {
     );
   }, [filteredItems, orderStatus]);
 
-  // Calculate paginated items and total pages
   const { paginatedItems, totalPages } = useMemo(() => {
     const startIndex = (currentPage - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
@@ -32,7 +28,6 @@ export default function ProductHome() {
     return { paginatedItems: paginated, totalPages: total };
   }, [sortedItems, currentPage, itemsPerPage]);
 
-  // Fetch items from JSON
   const fetchItems = async () => {
     try {
       const response = await fetch("/items.json");
@@ -58,12 +53,10 @@ export default function ProductHome() {
     fetchItems();
   }, []);
 
-  // Reset to first page when filters change
   useEffect(() => {
     setCurrentPage(1);
   }, [filteredItems]);
 
-  // Handle page navigation
   const handlePreviousPage = () => {
     if (currentPage > 1) {
       setCurrentPage((prev) => prev - 1);
@@ -77,23 +70,23 @@ export default function ProductHome() {
   };
 
   return (
-    <Container fluid>
-      <h1>商品篩選系統</h1>
-      <Row className="g-3">
-        <Col md={4}>
-          <section className="filter-column-list h-100">
-            <h5 className="text-nowrap">篩選器區域</h5>
+    <div className="container-fluid"> 
+      <h1 className="text-center my-3">商品篩選系統</h1>
+      <div className="row g-3"> 
+        <div className="col-md-4">
+          <section className="filter-column-list h-100 p-3 bg-light border rounded">
+            <h5 className="text-nowrap mb-3">篩選器區域</h5> 
             <ProductFilters
               originItems={originItems}
               setFilteredItems={setFilteredItems}
             />
           </section>
-        </Col>
-        <Col md={8}>
-          <section className="item-list-column h-100">
-            <h5>商品區域列表</h5>
-            <div className="d-flex align-items-center justify-content-between">
-              <div className="flex input-group mb-2 w-50">
+        </div>
+        <div className="col-md-8">
+          <section className="item-list-column h-100 p-3 bg-light border rounded">
+            <h5 className="mb-3">商品區域列表</h5>
+            <div className="d-flex align-items-center justify-content-between mb-3">
+              <div className="input-group w-auto">
                 <label className="input-group-text" htmlFor="price_status">
                   資料順序
                 </label>
@@ -107,43 +100,45 @@ export default function ProductHome() {
                   <option value="asc">價格由低到高</option>
                 </select>
               </div>
-              <div
-                className="btn-group"
-                role="group"
-                aria-label="Pagination controls"
-              >
-                {`${currentPage}/${totalPages}`}
-                <button
-                  type="button"
-                  className="btn btn-primary btn-sm ms-3"
-                  onClick={handlePreviousPage}
-                  disabled={currentPage === 1}
+              <div className="d-flex align-items-center">
+                <span className="me-2">{`${currentPage}/${totalPages > 0 ? totalPages : 1}`}</span>
+                <div
+                  className="btn-group"
+                  role="group"
+                  aria-label="Pagination controls"
                 >
-                  上一頁
-                </button>
-                <button
-                  type="button"
-                  className="btn btn-primary btn-sm"
-                  onClick={handleNextPage}
-                  disabled={currentPage === totalPages || totalPages === 0}
-                >
-                  下一頁
-                </button>
+                  <button
+                    type="button"
+                    className="btn btn-primary btn-sm"
+                    onClick={handlePreviousPage}
+                    disabled={currentPage === 1}
+                  >
+                    上一頁
+                  </button>
+                  <button
+                    type="button"
+                    className="btn btn-primary btn-sm"
+                    onClick={handleNextPage}
+                    disabled={currentPage === totalPages || totalPages === 0}
+                  >
+                    下一頁
+                  </button>
+                </div>
               </div>
             </div>
 
             <ProductList
-              items={paginatedItems} // Use paginated items
+              items={paginatedItems}
               isLoading={isLoading}
               error={error}
             />
           </section>
-        </Col>
-      </Row>
+        </div>
+      </div>
 
-      <footer className="mt-4">
+      <footer className="mt-4 text-center">
         <p>© {new Date().getFullYear()} 面試有限公司</p>
       </footer>
-    </Container>
+    </div>
   );
 }
